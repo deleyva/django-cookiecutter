@@ -10,13 +10,13 @@
 
 """
 
+
 import re
 import sys
 
-MODULE_REGEX = r"^[_a-zA-Z][_a-zA-Z0-9]+$"
-
 MODULE_NAME = "{{ cookiecutter.project_slug }}"
 
+MODULE_REGEX = r"^[_a-zA-Z][_a-zA-Z0-9]+$"
 if not re.match(MODULE_REGEX, MODULE_NAME):
     print(
         f"ERROR: The project slug {MODULE_NAME} is not a valid Python module\
@@ -29,11 +29,9 @@ if not re.match(MODULE_REGEX, MODULE_NAME):
 
 LANGUAGES = "{{ cookiecutter.LANGUAGES }}".replace(" ", "").split(",")
 for language in LANGUAGES:
-    assert len(language) == 2 and language.lower() == language, (  # nosec
-        "A language code shall contain two lowercase letters, '"
-        + language
-        + "' doesn't."
-    )
+    assert (
+        len(language) == 2 and language.lower() == language
+    ), f"A language code shall contain two lowercase letters, '{language}' doesn't."
 
 # fmt: off
 # if "{{ cookiecutter.USE_I18N }}" == "True":

@@ -15,7 +15,7 @@ def test_django_bakes_ok_with_defaults(cookies):
 
     assert default_django.exit_code == 0
     assert default_django.project_path.is_dir()
-    assert default_django.exception == None  # noqa: E711
+    assert default_django.exception is None
     assert default_django.project_path.name == "django-boilerplate"
 
 

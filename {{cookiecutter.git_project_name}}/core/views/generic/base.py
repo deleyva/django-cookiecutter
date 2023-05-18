@@ -48,10 +48,7 @@ class HtmxTemplateResponseMixin(TemplateResponseMixin):
                 "implementation of 'get_template_names()'"
             )
 
-        if self.request.htmx:
-            return [self.htmx_template_name]
-
-        return [self.template_name]
+        return [self.htmx_template_name] if self.request.htmx else [self.template_name]
 
 
 class HtmxTemplateView(HtmxTemplateResponseMixin, TemplateView):
