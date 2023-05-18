@@ -288,7 +288,7 @@ def exception_hook(type, value, traceback):
     :param traceback: What was happening as a Traceback object
     """
     logging.getLogger("*excepthook*").critical(
-        f"Uncaught Exception!", exc_info=(type, value, traceback)
+        "Uncaught Exception!", exc_info=(type, value, traceback)
     )
 
 # The function assigned to sys.excepthook is called just before control is

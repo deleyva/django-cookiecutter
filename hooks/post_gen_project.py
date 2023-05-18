@@ -67,17 +67,14 @@ def post_gen_setup(*args, supress_exception=False, cwd=None):
             os.chdir(cwd)
 
         with subprocess.Popen(  # nosec
-            args, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-        ) as proc:
+                    args, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+                ) as proc:
 
             out, err = proc.communicate()
             out = out.decode("utf-8")
             err = err.decode("utf-8")
             if err and not supress_exception:
                 raise Exception(err)
-            if err and supress_exception:
-                return out
-
             return out
 
     finally:
